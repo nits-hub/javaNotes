@@ -1,0 +1,52 @@
+1. Difference b/w deepcopy and shallow copy in array
+
+Deep copy - 
+    In Java, a deep copy of an array means creating a new array and then copying all the elements of the original array to the new array. This ensures that changes to the new array do not affect the original array and vice versa.
+    e.g., 
+        int[] deepCopyArray = new int[originalArray.length];
+
+        for (int i = 0; i < originalArray.length; i++) {
+            deepCopyArray[i] = originalArray[i];
+        }
+
+        // Now, changes to deepCopyArray will not affect originalArray
+        deepCopyArray[0] = 99;
+        System.out.println(originalArray[0]); // Output: 1
+        System.out.println(deepCopyArray[0]); // Output: 99
+
+Shallow copy - 
+    In Java, a shallow copy of an array means creating a new array object but copying only the references of the elements from the original array to the new array. This means that the elements themselves are not duplicated, and both the original and the copied array refer to the same elements.
+    e.g., 
+        public class ShallowCopyExample {
+            public static void main(String[] args) {
+                // Original array
+                int[] originalArray = {1, 2, 3, 4, 5};
+
+                // Shallow copy of the array
+                int[] shallowCopy = originalArray;
+
+                // Modifying an element in the shallow copy
+                shallowCopy[0] = 10;
+
+                // Printing both arrays to show the effect
+                System.out.println("Original array: ");
+                for (int i : originalArray) {
+                    System.out.print(i + " ");
+                }
+
+                System.out.println("\nShallow copy array: ");
+                for (int i : shallowCopy) {
+                    System.out.print(i + " ");
+                }
+            }
+        }
+        output - 
+            Original array:
+            10 2 3 4 5
+            Shallow copy array:
+            10 2 3 4 5
+
+    1. Since, Java array implements the Cloneable interface, we can create the clone of the Java array. If we create the clone of a single-dimensional array, it creates the deep copy of the Java array. It means, it will copy the actual value. But, if we create the clone of a multidimensional array, it creates the shallow copy of the Java array which means it copies the references.
+
+
+
